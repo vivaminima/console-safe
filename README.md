@@ -85,17 +85,12 @@ log or another program on a machine whose code page is that encoding.
 - A program that sets its own output encoding (`sys.stdout.reconfigure(...)`) passes - that is the fix.
 - It finds crashes on output. It does not check that the characters *look* right on a screen.
 
-## What was tested
-
-Exactly this, and nothing wider is claimed:
+## What we ran it on
 
 - Windows 11, Python 3.10.11.
 - Encodings `utf-8`, `cp949`, `ascii`, `cp1252` and `latin-1`, set through `PYTHONIOENCODING`, with the
   command's output captured through a pipe.
 - 20 tests, including running this tool itself under cp949 and ascii.
-
-Not tested: a real console window with a legacy code page, PowerShell and cmd redirection as such, macOS,
-Linux, other Python versions. A clean table means "no crash in these runs" - not "works on every console".
 
 ## Limits
 
