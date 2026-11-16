@@ -4,6 +4,8 @@
 
 <img src="https://raw.githubusercontent.com/vivaminima/vivaminima/main/img/run/console-safe.png" width="760" alt="console-safe: real output of the free version on a made-up sample">
 
+**Install in Claude Code:** `/plugin install console-safe --marketplace vivaminima/vivaminima`
+
 Run a Python command-line tool under several console encodings and see where it dies.
 
 ## New to this? Start here
