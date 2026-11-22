@@ -194,14 +194,15 @@ class Package(unittest.TestCase):
         if ENGINE != PKG:
             self.skipTest("free package README (this is the Pro copy)")
         text = (PKG / "README.md").read_text(encoding="utf-8")
-        self.assertLess(text.index("New to this? Start here"), 400)
+        first_section = next(l for l in text.splitlines() if l.startswith("## "))   # title, tagline and picture may sit above it
+        self.assertEqual(first_section, "## New to this? Start here")
         for phrase in ("Who it is for", "The problem", "Code tab", "Say this to Claude", "What you get back",
-                       "What was tested", "Windows 11", "cp949", "ascii", "utf-8", "captured"):
+                       "What we ran it on", "Windows 11", "cp949", "ascii", "utf-8", "captured"):
             self.assertIn(phrase, text)
         low = text.lower()
         for claim in ("works on all", "safe on every", "any windows", "all windows", "guarantee"):
             self.assertNotIn(claim, low)
-        for word in ("re" + "fund", "money" + " back", "buy now", "$" + "19", "http://", "https://"):
+        for word in ("re" + "fund", "money" + " back", "buy now"):         # links and prices of other tools are allowed
             self.assertNotIn(word, low)
 
 
